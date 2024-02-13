@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private NavMeshAgent player;
+    [SerializeField] private MapGenerator mapGenerator;
 
     private Vector3 cameraOffset;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = this.GetComponent<NavMeshAgent>();
+        if (mapGenerator != null && mapGenerator.spawnPoint != null)
+        {
+            transform.position = new Vector3(mapGenerator.spawnPoint.position.x + 1, 1, mapGenerator.spawnPoint.position.z + 1);
+        }
     }
 
     // Update is called once per frame
@@ -23,9 +30,22 @@ public class PlayerMovement : MonoBehaviour
         {
             mainCamera.transform.position = cameraOffset; // Keep camera on player
         }
-        if (transform.rotation.x != 0 || transform.rotation.z != 0)
+
+        if (Input.GetMouseButtonDown(0))
         {
-            transform.rotation = new Quaternion (0, transform.rotation.y, 0, 0); // Stabilises the player
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitPoint;
+
+            if (Physics.Raycast(ray, out hitPoint))
+            {
+                if (!player.isOnNavMesh)
+                {
+                    player.enabled = false;
+                    player.enabled = true;
+                }
+                player.SetDestination(hitPoint.point);
+                
+            }
         }
     }
 }
