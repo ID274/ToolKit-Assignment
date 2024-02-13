@@ -13,6 +13,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private int mapHeight;
     [SerializeField] private int mapWidth;
     [SerializeField] private bool makeMapOnStart = false;
+    [SerializeField] public bool spawnPlants = false;
 
 
     void Start()
@@ -23,10 +24,20 @@ public class MapGenerator : MonoBehaviour
             {
                 int rnd = Random.Range(0, blockPrefabs.Length);
                 GameObject zBlock = Instantiate(blockPrefabs[rnd], new Vector3(0, 0, i), Quaternion.identity);
+                PlantScript plantzBlock = zBlock.GetComponent<PlantScript>();
+                if (plantzBlock != null)
+                {
+                    plantzBlock.spawnPlantsLocal = spawnPlants;
+                }
                 GameObject zboundaryBlock = Instantiate(floorBoundaryBlock, new Vector3(0, -0.9f, i), Quaternion.identity);
                 for (int j = 1; j < mapWidth; j++)
                 {
                     GameObject xBlock = Instantiate(blockPrefabs[rnd], new Vector3(j, 0, i), Quaternion.identity);
+                    PlantScript plantxBlock = xBlock.GetComponent<PlantScript>();
+                    if (plantxBlock != null)
+                    {
+                        plantxBlock.spawnPlantsLocal = spawnPlants;
+                    }
                     GameObject xboundaryBlock = Instantiate(floorBoundaryBlock, new Vector3(j, -0.9f, i), Quaternion.identity);
                     rnd = Random.Range(0, blockPrefabs.Length);
                 }
@@ -34,9 +45,5 @@ public class MapGenerator : MonoBehaviour
             }
         }
         
-    }
-    void Update()
-    {
-
     }
 }

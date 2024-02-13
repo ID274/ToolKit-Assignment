@@ -6,11 +6,17 @@ public class PlantScript : MonoBehaviour
 {
     [SerializeField] private GameObject tree, bush;
 
+    public bool spawnPlantsLocal;
+
+
     void Start()
     {
         tree.SetActive(false);
         bush.SetActive(false);
-        TrySpawn();
+        if (spawnPlantsLocal)
+        {
+            TrySpawn();
+        }
     }
 
     void TrySpawn()

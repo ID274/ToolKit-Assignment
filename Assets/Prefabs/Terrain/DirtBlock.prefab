@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tree: {fileID: 4059884688599902052}
   bush: {fileID: 5905729046159873075}
+  mapGenerator: {fileID: 8995907229819717795, guid: 370c1c25176ba4d4fbe3707028b92bc8, type: 3}
 --- !u!1 &2133635125927867822
 GameObject:
   m_ObjectHideFlags: 0
