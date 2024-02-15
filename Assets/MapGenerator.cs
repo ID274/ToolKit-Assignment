@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.AI.Navigation;
 using UnityEngine.AI;
-using Unity.VisualScripting;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -26,7 +25,6 @@ public class MapGenerator : MonoBehaviour
     public Transform spawnPoint;
     const int maxMapHeight = 100;
     const int maxMapWidth = 100;
-    private bool failed = false;
 
     private int i; // the "i" variable for the SpawnZBlocks method, so that SpawnXBlocks method also has access to the value
 
@@ -44,7 +42,7 @@ public class MapGenerator : MonoBehaviour
 
 
 
-        if (makeMapOnStart && !failed)
+        if (makeMapOnStart)
         {
             SpawnZBlocks();
             navSurface.BuildNavMesh(); // Builds the navmesh at runtime

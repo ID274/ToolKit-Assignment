@@ -5,18 +5,22 @@ using UnityEngine;
 
 public class PlantScript : MonoBehaviour
 {
-    [SerializeField] private GameObject tree, bush;
+    [SerializeField] private GameObject tree, bush, berryBush;
 
     [SerializeField] public Transform blockTransform;
 
 
     public bool spawnPlantsLocal;
+    public int berryBushCount;
 
 
     void Start()
     {
+        berryBushCount = 0;
         tree.SetActive(false);
         bush.SetActive(false);
+        berryBush.SetActive(false);
+        
         if (spawnPlantsLocal)
         {
             StartCoroutine(TrySpawn());
@@ -65,10 +69,21 @@ public class PlantScript : MonoBehaviour
         float rndZ = CalculateOffset();
         for (int i = 0; i < numberOfBush; i++)
         {
-            GameObject bushPrefab = InstantiateBush(rndX, rndZ);
-            bushPrefab.SetActive(true);
-            rndX = CalculateOffset();
-            rndZ = CalculateOffset();
+            if (berryBushCount < 5)
+            {
+                berryBushCount++;
+                GameObject berryBushPrefab = InstantiateBerryBush(rndX, rndZ);
+                berryBushPrefab.SetActive(true);
+                rndX = CalculateOffset();
+                rndZ = CalculateOffset();
+            }
+            else
+            {
+                GameObject bushPrefab = InstantiateBush(rndX, rndZ);
+                bushPrefab.SetActive(true);
+                rndX = CalculateOffset();
+                rndZ = CalculateOffset();
+            }
         }
     }
 
@@ -81,6 +96,13 @@ public class PlantScript : MonoBehaviour
     {
         return Instantiate(bush, new Vector3((blockTransform.position.x + rndX), 0.8f, (blockTransform.position.z + rndZ)), Quaternion.identity);
     }
+    
+    private GameObject InstantiateBerryBush(float rndX, float rndZ)
+    {
+        return Instantiate(berryBush, new Vector3((blockTransform.position.x + rndX), 0.8f, (blockTransform.position.z + rndZ)), Quaternion.identity);
+    }
+
+
 
     private float CalculateOffset()
     {

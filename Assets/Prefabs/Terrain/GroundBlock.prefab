@@ -48,8 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tree: {fileID: 1138480643805705841, guid: 49bea55ce74490c4bb80b4953f0860c1, type: 3}
   bush: {fileID: 7396910887297730417, guid: d56ee48933c54074e89c73fe0865b650, type: 3}
+  berryBush: {fileID: 7396910887297730417, guid: 89901974c57f3e24c9393d02739acf6f, type: 3}
   blockTransform: {fileID: 1084839470682356091}
   spawnPlantsLocal: 0
+  berrybushCount: 0
 --- !u!1 &2133635125927867822
 GameObject:
   m_ObjectHideFlags: 0
