@@ -62,6 +62,7 @@
     <Compile Include="Assets\ItemController.cs" />
     <Compile Include="Assets\Quest.cs" />
     <Compile Include="Assets\Item.cs" />
+    <Compile Include="Assets\ItemPickup.cs" />
     <Compile Include="Assets\PlayerMovement.cs" />
     <Compile Include="Assets\InventoryManager.cs" />
     <Compile Include="Assets\PlantScript.cs" />

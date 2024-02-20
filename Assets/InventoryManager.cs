@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,10 +10,11 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance;
     public List<Item> items = new List<Item>();
 
-    [Header("References")]
-    [SerializeField] private GameObject[] itemSlots;
-    [SerializeField] private TextMeshProUGUI[] itemCounts;
-    public Color emptyColor = Color.gray;
+    public Transform itemContent;
+    public GameObject inventoryItem;
+
+
+
 
     private void Awake()
     {
@@ -22,11 +24,7 @@ public class InventoryManager : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < itemSlots.Length; i++)
-        {
-            itemCounts[i].text = 0.ToString();
-            itemSlots[i].GetComponent<Image>().color = emptyColor;
-        }
+
     }
 
     public void Add(Item item)
@@ -37,5 +35,22 @@ public class InventoryManager : MonoBehaviour
     public void Remove(Item item)
     {
         items.Remove(item);
+    }
+
+    public void ListItems()
+    {
+        foreach (Transform item in itemContent)
+        {
+            Destroy(item.gameObject);
+        }
+        foreach (var item in items)
+        {
+            GameObject obj = Instantiate(inventoryItem, itemContent);
+            var itemIcon = obj.transform.Find("itemIcon").GetComponent<Image>();
+            var itemCount = obj.transform.Find("itemCount").GetComponent<TMP_Text>();
+
+            itemIcon.sprite = item.itemSprite;
+            itemCount.text = item.count.ToString();
+        }
     }
 }

@@ -8,5 +8,5 @@ public class Item : ScriptableObject
     public int itemID;
     public string itemName;
     public int count;
-    public Sprite sprite;
+    public Sprite itemSprite;
 }

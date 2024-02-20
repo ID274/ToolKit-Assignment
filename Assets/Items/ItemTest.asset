@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43c08f0f6564e9743923f02d6d56bf15, type: 3}
-  m_Name: Berry
+  m_Name: ItemTest
   m_EditorClassIdentifier: 
-  itemID: 1
-  itemName: Berry
-  count: 30
-  itemSprite: {fileID: 21300000, guid: 30a78debf8874b14daeebd992690eb38, type: 3}
+  itemID: 0
+  itemName: 
+  count: 0
+  itemSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
