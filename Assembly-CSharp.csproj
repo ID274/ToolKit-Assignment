@@ -65,6 +65,7 @@
     <Compile Include="Assets\ItemPickup.cs" />
     <Compile Include="Assets\PlayerMovement.cs" />
     <Compile Include="Assets\InventoryManager.cs" />
+    <Compile Include="Assets\QuestManager.cs" />
     <Compile Include="Assets\PlantScript.cs" />
     <Compile Include="Assets\MapGenerator.cs" />
   </ItemGroup>
