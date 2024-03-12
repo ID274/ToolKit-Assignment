@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private NavMeshAgent player;
     [SerializeField] private MapGenerator mapGenerator;
+    [SerializeField] private Image[] menus;
 
     private Vector3 cameraOffset;
 
@@ -33,6 +36,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            foreach (var Image in menus)
+            {
+                if (Image.IsActive() == true)
+                {
+                    return;
+                }
+            }
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitPoint;
 
@@ -44,8 +54,9 @@ public class PlayerMovement : MonoBehaviour
                     player.enabled = true;
                 }
                 player.SetDestination(hitPoint.point);
-                
+
             }
         }
     }
+
 }

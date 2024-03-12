@@ -11,6 +11,6 @@ public class MapMesh : MonoBehaviour
 
     void Start()
     {
-        navSurface.BuildNavMesh();
+        //navSurface.BuildNavMesh();
     }
 }

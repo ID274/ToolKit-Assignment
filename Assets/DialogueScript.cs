@@ -47,7 +47,10 @@ public class DialogueScript : MonoBehaviour
 
     private void Update()
     {
-        
+        if (dialogueID == 0)
+        {
+            speakerNameText.text = "[QUEST NPC]";
+        }
     }
 
     IEnumerator ShowText()
@@ -64,30 +67,51 @@ public class DialogueScript : MonoBehaviour
 
     public void OnChoiceOne()
     {
-        if (QuestManager.Instance.currentQuestID == 0)
+        if (dialogueID == 0 && QuestManager.Instance.currentQuestID == 0)
         {
             questNPC.talked = true;
+            delay = delayStart;
+            dialogueMenu.SetActive(false);
+        }
+        else if (dialogueID == 1)
+        {
+            delay = delayStart;
+            dialogueMenu.SetActive(false);
+            QuestManager.Instance.EndQuest();
         }
     }
     public void OnChoiceTwo()
     {
-        dialogueMenu.SetActive(false);
+        if (dialogueID == 0 && QuestManager.Instance.currentQuestID == 0)
+        {
+            delay = delayStart;
+            dialogueMenu.SetActive(false);
+        }
+        else if (dialogueID == 1)
+        {
+            delay = delayStart;
+            dialogueMenu.SetActive(false);
+            QuestManager.Instance.EndQuest();
+        }
     }
 
     public void OnNextButton()
     {
-        delay = 0f;
-        if (dialogueContent.Length != dialogueID + 1)
-        {
-            delay = delayStart;
-            dialogueID++;
-            StartCoroutine(ShowText());
-        }
+        delay = 0.01f;
     }
 
     public void OnCloseButton()
     {
-        dialogueMenu.SetActive(true);
+        delay = delayStart;
+        dialogueMenu.SetActive(false);
+    }
+
+    public void OnQuestComplete()
+    {
+        dialogueID++;
+        choice1Text.text = dialogueChoice1[dialogueID];
+        choice2Text.text = dialogueChoice2[dialogueID];
+        dialogueText = dialogueContent[dialogueID];
     }
 
 }

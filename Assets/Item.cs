@@ -7,6 +7,8 @@ public class Item : ScriptableObject
     [Header("Attrributes")]
     public int itemID;
     public string itemName;
-    public int count;
     public Sprite itemSprite;
+
+    [HideInInspector]
+    public int count;
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class QuestManager : MonoBehaviour
 {
@@ -12,7 +13,10 @@ public class QuestManager : MonoBehaviour
     public int currentQuestID;
     public Quest currentQuest;
     [SerializeField] private Quest[] quests;
-    public QuestNPC questNPC;
+    public QuestNPC[] questNPC;
+    public GameObject[] NPC;
+    public bool complete;
+    [SerializeField] private Item currentItem;
 
 
     [Header("Quest Display")]
@@ -22,6 +26,7 @@ public class QuestManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        questNPC[0] = NPC[0].GetComponent<QuestNPC>();
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -33,19 +38,27 @@ public class QuestManager : MonoBehaviour
         questNameText.text = "";
         questDescriptionText.text = "";
         currentQuestID = 0;
-        if (questNPC.talked)
-        {
-            NextQuest();
-        }
+        QuestBeginning();
+        DisplayQuest();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (quests[currentQuestID] != null && currentQuest != quests[currentQuestID])
+        if (currentQuest.item != null && currentItem != currentQuest.item)
+        {
+            currentItem = currentQuest.item;
+        }
+        if (questNPC[0].talked)
+        {
+            Debug.Log("QuestNPC talked");
+            questNPC[0].talked = false;
+            NextQuest();
+        }
+        if (quests[currentQuestID] != null)
         {
             currentQuest = quests[currentQuestID];
-            Debug.Log(currentQuest.ToString());
+            //Debug.Log(currentQuest.ToString());
         }
         else
         {
@@ -57,10 +70,21 @@ public class QuestManager : MonoBehaviour
         //}
     }
 
-    void NextQuest()
+    public void QuestBeginning()
     {
-        if (quests[currentQuestID] != null && currentQuest != quests[currentQuestID])
+        if (quests[currentQuestID] != null && currentQuestID == 0)
         {
+            currentQuest = quests[currentQuestID];
+            DisplayQuest();
+        }
+    }
+
+    public void NextQuest()
+    {
+        complete = false;
+        if (quests[currentQuestID + 1] != null)
+        {
+            currentQuestID++;
             currentQuest = quests[currentQuestID];
             Debug.Log(currentQuest.ToString());
         }
@@ -73,7 +97,15 @@ public class QuestManager : MonoBehaviour
 
     public void EndQuest()
     {
-        currentQuestID++;
+        Debug.Log("Check1");
+        if (currentQuest.item != null)
+        {
+            Debug.Log("Check2");
+            currentItem.count++;
+            InventoryManager.Instance.Add(currentItem);
+        }
+
+        InventoryManager.Instance.ListItems();
         NextQuest();
     }
 

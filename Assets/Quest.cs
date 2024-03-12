@@ -9,5 +9,5 @@ public class Quest : ScriptableObject
     public string questName;
     public string questDescription;
     public bool questComplete;
-    public bool questActive;
+    public Item item;
 }

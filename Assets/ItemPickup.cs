@@ -28,11 +28,11 @@ public class ItemPickup : MonoBehaviour
             InventoryManager.Instance.ListItems();
         }
         Debug.Log($"{QuestManager.Instance.currentQuestID == 1} + {item == InventoryManager.Instance.items[0]} + {item.count >= 3}");
-        if (QuestManager.Instance.currentQuestID == 0 && item == InventoryManager.Instance.items[0] && item.count >= 3)
+        if (QuestManager.Instance.currentQuestID == 1 && item == InventoryManager.Instance.items[0] && item.count >= 3)
         {
             Debug.Log("Quest should be complete");
             QuestManager.Instance.currentQuest.questComplete = true;
-            QuestManager.Instance.EndQuest();
+            QuestManager.Instance.complete = true;
         }
 
     }
