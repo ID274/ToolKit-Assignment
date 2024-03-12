@@ -12,6 +12,7 @@ public class QuestManager : MonoBehaviour
     public int currentQuestID;
     public Quest currentQuest;
     [SerializeField] private Quest[] quests;
+    public QuestNPC questNPC;
 
 
     [Header("Quest Display")]
@@ -32,33 +33,35 @@ public class QuestManager : MonoBehaviour
         questNameText.text = "";
         questDescriptionText.text = "";
         currentQuestID = 0;
-        NextQuest();
+        if (questNPC.talked)
+        {
+            NextQuest();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (quests[currentQuestID - 1] != null && currentQuest != quests[currentQuestID - 1])
+        if (quests[currentQuestID] != null && currentQuest != quests[currentQuestID])
         {
-            currentQuest = quests[currentQuestID - 1];
+            currentQuest = quests[currentQuestID];
             Debug.Log(currentQuest.ToString());
         }
         else
         {
             return;
         }
-        if (currentQuest.questComplete)
-        {
-            EndQuest();
-        }
+        //if (currentQuest.questComplete)
+        //{
+        //    EndQuest();
+        //}
     }
 
     void NextQuest()
     {
-        currentQuestID++;
-        if (quests[currentQuestID - 1] != null && currentQuest != quests[currentQuestID - 1])
+        if (quests[currentQuestID] != null && currentQuest != quests[currentQuestID])
         {
-            currentQuest = quests[currentQuestID - 1];
+            currentQuest = quests[currentQuestID];
             Debug.Log(currentQuest.ToString());
         }
         else
@@ -68,8 +71,9 @@ public class QuestManager : MonoBehaviour
         DisplayQuest();
     }
 
-    void EndQuest()
+    public void EndQuest()
     {
+        currentQuestID++;
         NextQuest();
     }
 

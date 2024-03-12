@@ -24,6 +24,7 @@ public class PlantScript : MonoBehaviour
         if (spawnPlantsLocal)
         {
             StartCoroutine(TrySpawn());
+            spawnPlantsLocal = false;
         }
     }
 

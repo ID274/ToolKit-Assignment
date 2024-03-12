@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ce3bd0db765a5439f3c85a88b83bb6, type: 3}
   m_Name: Quest1
   m_EditorClassIdentifier: 
-  questID: 1
+  questID: 0
   questName: Fruit Search
-  questDescription: Find 5 berries
+  questDescription: Find 3 berries
   questComplete: 1
   questActive: 0

@@ -59,15 +59,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BerryBushScript.cs" />
+    <Compile Include="Assets\QuestNPC.cs" />
     <Compile Include="Assets\ItemController.cs" />
     <Compile Include="Assets\Quest.cs" />
     <Compile Include="Assets\Item.cs" />
     <Compile Include="Assets\ItemPickup.cs" />
     <Compile Include="Assets\PlayerMovement.cs" />
+    <Compile Include="Assets\DialogueScript.cs" />
     <Compile Include="Assets\InventoryManager.cs" />
     <Compile Include="Assets\QuestManager.cs" />
     <Compile Include="Assets\PlantScript.cs" />
     <Compile Include="Assets\MapGenerator.cs" />
+    <Compile Include="Assets\MapMesh.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
