@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
     public List<Item> items = new List<Item>();
+    public List<Quest> quests = new List<Quest>();
 
     public Transform itemContent;
     public GameObject inventoryItem;
@@ -20,7 +21,16 @@ public class InventoryManager : MonoBehaviour
     {
         Instance = this;
     }
-
+    private void Start()
+    {
+        foreach (Quest quest in quests)
+        {
+            if (quest.item != null)
+            {
+                quest.item.count = 0;
+            }
+        }
+    }
     public void Add(Item item)
     {
         items.Add(item);

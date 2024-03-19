@@ -68,9 +68,11 @@
     <Compile Include="Assets\DialogueScript.cs" />
     <Compile Include="Assets\InventoryManager.cs" />
     <Compile Include="Assets\QuestManager.cs" />
+    <Compile Include="Assets\PuzzleDoor.cs" />
     <Compile Include="Assets\PlantScript.cs" />
     <Compile Include="Assets\MapGenerator.cs" />
     <Compile Include="Assets\MapMesh.cs" />
+    <Compile Include="Assets\PuzzleScene\PuzzleScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -11,4 +12,5 @@ public class Item : ScriptableObject
 
     [HideInInspector]
     public int count;
+
 }

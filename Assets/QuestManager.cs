@@ -17,6 +17,7 @@ public class QuestManager : MonoBehaviour
     public GameObject[] NPC;
     public bool complete;
     [SerializeField] private Item currentItem;
+    [SerializeField] private GameObject[] berrybush;
 
 
     [Header("Quest Display")]
@@ -35,6 +36,7 @@ public class QuestManager : MonoBehaviour
         {
             Instance = this;
         }
+        DontDestroyOnLoad(gameObject);
         questNameText.text = "";
         questDescriptionText.text = "";
         currentQuestID = 0;
@@ -111,6 +113,13 @@ public class QuestManager : MonoBehaviour
 
     void DisplayQuest()
     {
+        if (currentQuestID == 1)
+        {
+            foreach (GameObject bush in berrybush)
+            {
+                bush.SetActive(true);
+            }
+        }
         Debug.Log(currentQuest.ToString());
         Debug.Log($"{currentQuest.questName}");
         Debug.Log($"{currentQuest.questDescription}");

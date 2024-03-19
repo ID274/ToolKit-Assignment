@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Quest2
   m_EditorClassIdentifier: 
   questID: 2
-  questName: Test
-  questDescription: Test quest
+  questName: Physics puzzle
+  questDescription: Complete the puzzle
   questComplete: 0
-  questActive: 0
+  item: {fileID: 0}
