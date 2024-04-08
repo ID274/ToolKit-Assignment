@@ -5,14 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class PuzzleScript : MonoBehaviour
 {
+    [SerializeField] private Camera puzzleCamera;
+    [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject maze;
     [SerializeField] private GameObject finishLine;
 
     [SerializeField] private int turnSpeed;
 
-    private void Start()
+    private void Awake()
     {
-
+        mainCamera.enabled = true;
+        puzzleCamera.enabled = false;
     }
 
     private void Update()
@@ -31,8 +34,9 @@ public class PuzzleScript : MonoBehaviour
     {
         if (collision.gameObject == finishLine)
         {
-            QuestManager.Instance.currentQuest.questComplete = true;
-            SceneManager.LoadScene(0);
+            QuestManager.Instance.NextQuest();
+            mainCamera.enabled = true;
+            puzzleCamera.enabled = false;
         }
     }
 }
