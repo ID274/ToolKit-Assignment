@@ -9,26 +9,17 @@ public class QuestNPC : MonoBehaviour
     public bool talked;
     [SerializeField] private GameObject dialogueMenu;
     [SerializeField] private DialogueScript dialogueScript;
-    [SerializeField] private Image[] menus;
     [SerializeField] private Camera mainCamera;
 
-    // Start is called before the first frame update
     void Start()
     {
         dialogueScript = dialogueMenu.GetComponent<DialogueScript>();
-        talked = false;
+        talked = false; // "talked" boolean is used to check if the player has interacted with the questNPC
     }
 
-    // Update is called once per frame
     void Update()
     {
-        foreach (var Image in menus)
-        {
-            if (Image.IsActive() == true)
-            {
-                return;
-            }
-        }
+        // The code below is used to check if the player has clicked on the NPC with the left mouse button. If the NPC is clicked, the dialogue menu opens.
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);

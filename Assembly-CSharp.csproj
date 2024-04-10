@@ -59,11 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\QuestNPC.cs" />
-    <Compile Include="Assets\ItemController.cs" />
     <Compile Include="Assets\Quest.cs" />
     <Compile Include="Assets\Item.cs" />
     <Compile Include="Assets\ItemPickup.cs" />
-    <Compile Include="Assets\ItemCount.cs" />
     <Compile Include="Assets\PlayerMovement.cs" />
     <Compile Include="Assets\PuzzleScript.cs" />
     <Compile Include="Assets\DialogueScript.cs" />

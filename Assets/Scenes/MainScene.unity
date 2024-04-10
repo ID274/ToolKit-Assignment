@@ -4101,7 +4101,6 @@ MonoBehaviour:
   talked: 0
   dialogueMenu: {fileID: 1981893501}
   dialogueScript: {fileID: 1981893503}
-  menus: []
   mainCamera: {fileID: 963194227}
 --- !u!114 &1006116515
 MonoBehaviour:
@@ -7694,7 +7693,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4188725272080528480, guid: 89901974c57f3e24c9393d02739acf6f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

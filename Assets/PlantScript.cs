@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlantScript : MonoBehaviour
 {
+    // This script is completely optional - it handles the spawning of plants (trees and bushes) on the tilemap if the graphic designer would like the map to be randomly generated
     [SerializeField] private GameObject tree, bush, berryBush;
 
     [SerializeField] public Transform blockTransform;

@@ -344,8 +344,6 @@ GameObject:
   - component: {fileID: 5405484122314950517}
   - component: {fileID: 1765294143699548293}
   - component: {fileID: 9163954238780778145}
-  - component: {fileID: 5670543591117870241}
-  - component: {fileID: 4188725272080528480}
   - component: {fileID: 1485926375387496223}
   m_Layer: 0
   m_Name: BerryBush
@@ -441,31 +439,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.99999994, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5670543591117870241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7396910887297730417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c426af712d3f4a548a584799573d4e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4188725272080528480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7396910887297730417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9fc0e14d6ceda647b62655237797fa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 51698f2369c0fea48840a90941965968, type: 2}
 --- !u!114 &1485926375387496223
 MonoBehaviour:
   m_ObjectHideFlags: 0

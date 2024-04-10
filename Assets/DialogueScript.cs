@@ -8,7 +8,7 @@ public class DialogueScript : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] private GameObject dialogueMenu;
-    [SerializeField] private Image speakerSprite;
+    [SerializeField] private Image speakerSprite; // The image for the speaker, in the toolkit it will be the image for the NPC
     [SerializeField] private TextMeshProUGUI speakerNameText;
     [SerializeField] private TextMeshProUGUI speakerDialogueText;
     [SerializeField] private Button closeButton;
@@ -28,12 +28,12 @@ public class DialogueScript : MonoBehaviour
     [Header("Show Text Attributes")]
     [SerializeField] private string currentText = "";
     [SerializeField] private float delay = 0.1f;
-    [SerializeField] private float delayStart;
+    [SerializeField] private float delayStart; // This bit is used to delay the next text so that the text effect does not overlap
 
 
     [Header("Dialogue Contents")]
-    [SerializeField] private string[] dialogueContent;
-    [SerializeField] private string[] dialogueChoice1;
+    [SerializeField] private string[] dialogueContent; // Dialogue content refers to the actual text the NPC communicates to the player
+    [SerializeField] private string[] dialogueChoice1; // Dialoguechoice1 and 2 refer to the options available to the player in the dialogue menu
     [SerializeField] private string[] dialogueChoice2;
 
 
@@ -55,6 +55,7 @@ public class DialogueScript : MonoBehaviour
 
     IEnumerator ShowText()
     {
+        // This code creates an effect where the text appears letter by letter and uses the "delay" variable for the delay between letters
         choice1Text.text = dialogueChoice1[dialogueID];
         choice2Text.text = dialogueChoice2[dialogueID];
         for (int i = 0; i < dialogueText.Length + 1; i++)
@@ -69,7 +70,7 @@ public class DialogueScript : MonoBehaviour
     {
         if (dialogueID == 0 && QuestManager.Instance.currentQuestID == 0)
         {
-            questNPC.talked = true;
+            questNPC.talked = true; // Sets the quest as accepted to let the questmanager know to set the corresponding quest as active
             delay = delayStart;
             dialogueMenu.SetActive(false);
         }
@@ -84,7 +85,7 @@ public class DialogueScript : MonoBehaviour
     {
         if (dialogueID == 0 && QuestManager.Instance.currentQuestID == 0)
         {
-            delay = delayStart;
+            delay = delayStart; // The questNPC.talked is not set to true here as this option will let the player back out of the dialogue without accepting the next quest
             dialogueMenu.SetActive(false);
         }
         else if (dialogueID == 1)
@@ -97,7 +98,7 @@ public class DialogueScript : MonoBehaviour
 
     public void OnNextButton()
     {
-        delay = 0.01f;
+        delay = 0.01f; // This lets the text "animation" speed up when the Next button is pressed. In essence: speeds up the dialogue.
     }
 
     public void OnCloseButton()
@@ -108,6 +109,7 @@ public class DialogueScript : MonoBehaviour
 
     public void OnQuestComplete()
     {
+        // The code below progresses the dialogue for the next quest
         dialogueID++;
         choice1Text.text = dialogueChoice1[dialogueID];
         choice2Text.text = dialogueChoice2[dialogueID];

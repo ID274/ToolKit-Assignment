@@ -11,6 +11,7 @@ public class PuzzleDoor : MonoBehaviour
     {
         if (QuestManager.Instance.currentQuestID == 2)
         {
+            // This code is in charge of changing camera to the puzzle camera facing the maze when the player collides with the puzzle door
             puzzleCamera.enabled = true;
             mainCamera.enabled = false;
         }

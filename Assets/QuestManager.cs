@@ -24,7 +24,6 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI questNameText;
     [SerializeField] private TextMeshProUGUI questDescriptionText;
 
-    // Start is called before the first frame update
     void Start()
     {
         questNPC[0] = NPC[0].GetComponent<QuestNPC>();
@@ -44,7 +43,6 @@ public class QuestManager : MonoBehaviour
         DisplayQuest();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (currentQuest.item != null && currentItem != currentQuest.item)
@@ -59,6 +57,7 @@ public class QuestManager : MonoBehaviour
         }
         if (quests[currentQuestID] != null)
         {
+            // This bit checks if the next quest isn't null, and if it isn't, sets current quest to the next quest
             currentQuest = quests[currentQuestID];
             //Debug.Log(currentQuest.ToString());
         }
@@ -66,10 +65,6 @@ public class QuestManager : MonoBehaviour
         {
             return;
         }
-        //if (currentQuest.questComplete)
-        //{
-        //    EndQuest();
-        //}
     }
 
     public void QuestBeginning()
@@ -103,7 +98,7 @@ public class QuestManager : MonoBehaviour
         if (currentQuest.item != null)
         {
             Debug.Log("Check2");
-            currentItem.count++;
+            currentItem.count++; // Add the quest reward (if it exists) to the player's inventory
             InventoryManager.Instance.Add(currentItem);
         }
 
@@ -113,6 +108,7 @@ public class QuestManager : MonoBehaviour
 
     void DisplayQuest()
     {
+        // This code is used to display the current quest in the UI.
         if (currentQuestID == 1)
         {
             foreach (GameObject bush in berrybush)

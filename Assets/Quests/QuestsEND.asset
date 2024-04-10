@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: QuestsEND
   m_EditorClassIdentifier: 
   questID: 4
-  questName: Test
-  questDescription: Test
+  questName: Toolkit over
+  questDescription: You have completed the demo
   questComplete: 0
   item: {fileID: 0}

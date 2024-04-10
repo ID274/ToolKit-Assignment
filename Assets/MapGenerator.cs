@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class MapGenerator : MonoBehaviour
 {
+    // This script is completely optional - it handles random map generation at runtime and allows the player to experience a different world every time
     [Header("Prefabs (each object in the array has the same chance of spawning)")]
     [SerializeField] private GameObject[] blockPrefabs;
 

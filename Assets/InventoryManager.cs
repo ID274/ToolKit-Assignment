@@ -23,6 +23,7 @@ public class InventoryManager : MonoBehaviour
     }
     private void Start()
     {
+        // This bit resets all item counts to 0 for the quests, only if they have an item
         foreach (Quest quest in quests)
         {
             if (quest.item != null)
@@ -43,6 +44,7 @@ public class InventoryManager : MonoBehaviour
 
     public void ListItems()
     {
+        // Resets and refills the inventory with items with itemCount and the itemIcon(s)
         foreach (Transform item in itemContent)
         {
             Destroy(item.gameObject);

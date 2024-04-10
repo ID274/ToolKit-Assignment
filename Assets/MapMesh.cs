@@ -11,6 +11,8 @@ public class MapMesh : MonoBehaviour
 
     void Start()
     {
+        //The code here can be used to build the navmesh surface at runtime, should be used with the random map generation tool
+
         //navSurface.BuildNavMesh();
     }
 }
