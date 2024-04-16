@@ -18,6 +18,7 @@ public class QuestManager : MonoBehaviour
     public bool complete;
     [SerializeField] private Item currentItem;
     [SerializeField] private GameObject[] berrybush;
+    [SerializeField] private DialogueScript dialogueScript;
 
 
     [Header("Quest Display")]
@@ -55,7 +56,7 @@ public class QuestManager : MonoBehaviour
             questNPC[0].talked = false;
             NextQuest();
         }
-        if (quests[currentQuestID] != null)
+        if (currentQuestID <= quests.Length)
         {
             // This bit checks if the next quest isn't null, and if it isn't, sets current quest to the next quest
             currentQuest = quests[currentQuestID];
@@ -79,7 +80,7 @@ public class QuestManager : MonoBehaviour
     public void NextQuest()
     {
         complete = false;
-        if (quests[currentQuestID + 1] != null)
+        if (currentQuestID + 1 <= quests.Length) // Checks if the currentQuestID will be higher when increased than the max index in the array
         {
             currentQuestID++;
             currentQuest = quests[currentQuestID];
@@ -101,7 +102,7 @@ public class QuestManager : MonoBehaviour
             currentItem.count++; // Add the quest reward (if it exists) to the player's inventory
             InventoryManager.Instance.Add(currentItem);
         }
-
+        dialogueScript.OnQuestComplete();
         InventoryManager.Instance.ListItems();
         NextQuest();
     }

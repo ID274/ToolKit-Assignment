@@ -80,6 +80,11 @@ public class DialogueScript : MonoBehaviour
             dialogueMenu.SetActive(false);
             QuestManager.Instance.EndQuest();
         }
+        else if (dialogueID == 2)
+        {
+            delay = delayStart;
+            dialogueMenu.SetActive(false);
+        }
     }
     public void OnChoiceTwo()
     {

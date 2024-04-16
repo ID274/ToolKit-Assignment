@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.id274.adventuregametoolkit": {
+      "version": "file:adventuregametoolkit",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.textmeshpro": "3.0.6",
+        "com.unity.ai.navigation": "1.1.5"
+      }
+    },
     "com.unity.ai.navigation": {
       "version": "1.1.5",
       "depth": 0,
